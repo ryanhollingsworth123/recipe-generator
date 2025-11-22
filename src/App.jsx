@@ -1,33 +1,37 @@
 import { useState } from "react"
+import RecipeDisplay from "./RecipeDisplay"
 
 export default function App() {
-  const [ingredients, setIngredients] = useState("")
-  const [recipe, setRecipe] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [ingredients, setIngredients] = useState("");
+  const [recipe, setRecipe] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
-      const response = await fetch("my backend", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ingredients }),
-      });
+      const response = await fetch(
+        "https://recipe-generator-backend-d1jx.onrender.com/api/recipe",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ingredients }),
+        }
+      );
 
-      const data = await response.json()
+      const data = await response.json();
       setRecipe(data.recipe);
     } catch (error) {
-      console.error("Error", error)
+      console.error("Error", error);
       setRecipe("Failed to get recipe. Try again.");
     }
 
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   return (
-        <div style={{ maxWidth: "600px", margin: "0 auto", padding: "2rem" }}>
+    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "2rem" }}>
       <h1>Recipe Generator</h1>
       <form onSubmit={handleSubmit}>
         <textarea
@@ -44,10 +48,9 @@ export default function App() {
 
       {recipe && (
         <div style={{ marginTop: "2rem" }}>
-          <h2>Recipe</h2>
-          <p>{recipe}</p>
+          <RecipeDisplay recipe={recipe} />
         </div>
       )}
     </div>
-  )
+  );
 }
