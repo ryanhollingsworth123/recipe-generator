@@ -1,5 +1,6 @@
-import { useState } from "react"
-import RecipeDisplay from "./RecipeDisplay"
+import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import foodImage from "./assets/foodplate.png"
 
 export default function App() {
   const [ingredients, setIngredients] = useState("");
@@ -31,14 +32,17 @@ export default function App() {
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "2rem" }}>
-      <h1>Recipe Generator</h1>
+    <div className="main-container">
+      <header>
+        <h1>Recipe Generator</h1>
+        <img src={foodImage} alt="Delicious food"/>
+      </header>
       <form onSubmit={handleSubmit}>
         <textarea
           placeholder="Enter ingredients, separated by commas"
           value={ingredients}
           onChange={(e) => setIngredients(e.target.value)}
-          rows={5}
+          rows={3}
           style={{ width: "100%", padding: "0.5rem" }}
         />
         <button type="submit" style={{ marginTop: "1rem" }}>
@@ -47,8 +51,8 @@ export default function App() {
       </form>
 
       {recipe && (
-        <div style={{ marginTop: "2rem" }}>
-          <RecipeDisplay recipe={recipe} />
+        <div className="recipe-container">
+          <ReactMarkdown>{recipe}</ReactMarkdown>
         </div>
       )}
     </div>

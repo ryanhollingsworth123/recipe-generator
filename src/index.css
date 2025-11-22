@@ -25,14 +25,38 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #2C2C36;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: #4E4E4E;
+  margin-block: 15px;
+  border-radius: 10px;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #C8BE93;
+  text-align: center;
+  margin-right: 15px;
+  padding: 10px;
+  margin-block: 10px;
 }
 
 button {
@@ -42,17 +66,43 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #C8BE93;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
   border-color: #646cff;
+  background-color: #C8BE93;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+textarea {
+  border-radius: 10px;
+  background-color: #E1E1E0;
+}
+
+.recipe-container {
+  background-color: #4E4E4E;
+  width: 85%;
+  margin-top: 30px;
+  color: #C8BE93;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+img {
+  width: 70px;
+  height: 70px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
